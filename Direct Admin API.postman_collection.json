@@ -1,0 +1,200 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Direct Admin API",
+		"_postman_id": "cff0274f-0b4c-5c71-4419-af8a49a8016b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"description": "",
+			"item": [
+				{
+					"name": "Get a SessionKey",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"SessionKey\", data.SessionKey);"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{DIRECT_PRODUCTION}}/Remote/Account/GetSessionKey",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "X-User-Id",
+								"value": "",
+								"description": ""
+							},
+							{
+								"key": "X-Iv",
+								"value": "",
+								"description": ""
+							},
+							{
+								"key": "X-Company-Automation-ID",
+								"value": "",
+								"description": ""
+							},
+							{
+								"key": "X-Hash",
+								"value": "",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"IpAddress\":\"email\",\n\t\"TimeStamp\":\"password\",\n\t\"Identity\":{\n\t\t\"UID\": 123456,\n         \"Email\": \"email@example.com\",\n         \"UserId\": \"username\",\n         \"SingleSignOnId\": \"user123\"\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get an Encryption Key",
+					"request": {
+						"url": "{{DIRECT_PRODUCTION}}/Remote/Account/GetEncryptionKey",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "X-Session-Key",
+								"value": "{{SessionKey}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UID\":123456,\n\t\"Email\":\"email\",\n\t\"UserId\":\"username\",\n\t\"SingleSignOnId\":\"user123\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create a New Encryption Key",
+					"request": {
+						"url": "{{DIRECT_PRODUCTION}}/Remote/Account/NewEncryptionKey",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "X-Session-Key",
+								"value": "{{SessionKey}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UID\":123456,\n\t\"Email\":\"email\",\n\t\"UserId\":\"username\",\n\t\"SingleSignOnId\":\"user123\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"description": "",
+			"item": [
+				{
+					"name": "List User Accounts",
+					"request": {
+						"url": "{{DIRECT_PRODUCTION}}/Remote/Account/List",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "X-Session-Key",
+								"value": "{{SessionKey}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserTypeId\":12345,\r\n    \"PageNumber\":1,\r\n    \"CompanyId\":0,\r\n    \"OrderBy\":\"UniqueId\",\r\n    \"Filter\":\"\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "View a User Account",
+					"request": {
+						"url": "{{DIRECT_PRODUCTION}}/Remote/Account/Read",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "X-Session-Key",
+								"value": "{{SessionKey}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"UID\":11597,\r\n   \"Email\":\"jane@example.com\",\r\n   \"UserId\":\"janetheadmin\",\r\n   \"SingleSignOnId\":\"ExampleJane\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Types",
+					"request": {
+						"url": "{{DIRECT_PRODUCTION}}/Remote/Account/GetUserTypes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "X-Session-Key",
+								"value": "{{SessionKey}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
