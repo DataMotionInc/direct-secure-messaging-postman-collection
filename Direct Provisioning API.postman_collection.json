@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "4f65fa5c-e557-47f3-92f0-3c6713a81017",
+		"name": "Direct Provisioning API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Certificate Requests",
+			"item": [
+				{
+					"name": "Request an Organizational Certificate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-User-ID",
+								"value": "UserID",
+								"type": "text"
+							},
+							{
+								"key": "X-USer-Password",
+								"value": "Password",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"TrustedAgent\": \"JohnTrust@example.com\",\r\n    \"OrganizationName\": \"MyTown Medical Center\",\r\n    \"OrganizationCategory\": 2,\r\n    \"City\": \"MyTown\",\r\n    \"State\": \"MyState\",\r\n    \"Country\": \"US\",\r\n    \"Lifetime\": 2,\r\n    \"CommonName\": \"direct.mytowndocs.com\",\r\n    \"SubjectAltName\": \"direct.mytowndocs.com\",\r\n    \"AutoRenew\": true,\r\n    \"DelegateIdProofing\": true,\r\n    \"Notes\": \"\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Certificate/Organizational",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Certificate",
+								"Organizational"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request an Address Certificate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Id",
+								"value": "UserId",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Password",
+								"value": "Password",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"TrustedAgent\": \"JohnTrust@example.com\",\r\n    \"OrganizationName\": \"MyTown Medical Center\",\r\n    \"OrganizationCategory\": 2,\r\n    \"FirstName\": \"Helen\",\r\n    \"LastName\": \"Jones\",\r\n    \"City\": \"MyTown\",\r\n    \"State\": \"NY\",\r\n    \"Country\": \"US\",\r\n    \"Lifetime\": 2,\r\n    \"CommonName\": \"Helen Jones\",\r\n    \"SubjectAltName\": \"HelenJonesMD@direct.mytowndocs.com\",\r\n    \"Password\": \"Password123\",\r\n    \"AutoRenew\": true,\r\n    \"DelegateIdProofing\": true,\r\n    \"EmailAddress\": \"helenjones123@personalemail.com\",\r\n    \"Notes\": \"\",\r\n    \"Address1\": \"123 Doctor Blvd\",\r\n    \"Address2\": \"Suite 1\",\r\n    \"ZipCode\": \"12345\",\r\n    \"Phone\": \"5551234567\",\r\n    \"Fax\": \"5551234568\",\r\n    \"NPI\": \"1234567890\",\r\n    \"OrgNPI\": \"1234567899\",\r\n    \"Specialty\": \"Internal Medicine\",\r\n    \"Role\": \"MD\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Certificate/Address",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Certificate",
+								"Address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request a Patient Certificate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Id",
+								"value": "UserID",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Password",
+								"value": "Password",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"TrustedAgent\": \"JohnTrust@example.com\",\r\n     \"OrganizationName\": \"MyTown Medical Center\",\r\n     \"OrganizationCategory\": 2,\r\n     \"FirstName\": \"Helen\",\r\n     \"LastName\": \"Jones\",\r\n     \"City\": \"MyTown\",\r\n     \"State\": \"NY\",\r\n     \"Country\": \"US\",\r\n     \"Lifetime\": 2,\r\n     \"CommonName\": \"Helen Jones\",\r\n     \"SubjectAltName\": \"HelenJonesMD@direct.mytowndocs.com\",\r\n     \"Password\": \"Password123\",\r\n     \"AutoRenew\": true,\r\n     \"DelegateIdProofing\": true,\r\n     \"EmailAddress\": \"helenjones123@personalemail.com\",\r\n     \"Notes\": \"\",\r\n     \"Address1\": \"123 Doctor Blvd\",\r\n     \"Address2\": \"Suite 1\",\r\n     \"ZipCode\": \"12345\",\r\n     \"Phone\": \"5551234567\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Certificate/Patient",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Certificate",
+								"Patient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revoke a Certificate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Id",
+								"value": "UserId",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Password",
+								"value": "Password",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DirectAddressOrDomain\": \"direct.mytowndocs.com\",\r\n    \"RevocationReason\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Certificate/Revocation",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Certificate",
+								"Revocation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Certificate Status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Id",
+								"value": "UserId",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Password",
+								"value": "Password",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"RequestId\": 123456\r\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Certificate/Status",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Certificate",
+								"Status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Requests",
+			"item": [
+				{
+					"name": "Provision a User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Id",
+								"value": "UserId",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Password",
+								"value": "Password",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"OrganizationName\": \"MyTown Medical Center\",\r\n    \"DirectAddress\": \"example@direct.mytownmedcenter.com\",\r\n    \"ContactEmail\": \"helenjones123@personalemail.com\",\r\n    \"FirstName\": \"Helen\",\r\n    \"LastName\": \"Jones\",\r\n    \"Address1\": \"123 Doctor Blvd\",\r\n    \"Address2\": \"Suite 1\",\r\n    \"City\": \"MyTown\",\r\n    \"State\": \"NY\",\r\n    \"ZipCode\": \"12345\",\r\n    \"Phone\": \"5551234567\",\r\n    \"Fax\": \"5551234568\",\r\n    \"NPI\": \"1234567890\",\r\n    \"OrgNPI\": \"1234567899\",\r\n    \"Specialty\": \"Internal Medicine\",\r\n    \"Role\": \"MD\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/User/Provision",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"User",
+								"Provision"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Id",
+								"value": "UserId",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Password",
+								"value": "Password",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DirectAddress\": \"Example@direct.example.com\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/User/Deletion",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"User",
+								"Deletion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check a User's Provisioning Status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Id",
+								"value": "UserId",
+								"type": "text"
+							},
+							{
+								"key": "X-User-Password",
+								"value": "Password",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"TrustedAgent\": \"TrustedAgent Name\",\r\n    \"OrganizationName\": \"MyTown Med Center\",\r\n    \"OrganizationCategory\": 4,\r\n    \"FirstName\": \"Helen\",\r\n    \"LastName\": \"Jones\",\r\n    \"City\": \"MyTown\",\r\n    \"State\": \"NY\",\r\n    \"Country\": \"US\",\r\n    \"Lifetime\": 3,\r\n    \"CommonName\": \"Helen Jones\",\r\n    \"SubjectAltName\": \"hjones@direct.mytownmedcenter.com\",\r\n    \"AutoRenew\": true,\r\n    \"DelegateIdProofing\": true,\r\n    \"EmailAddress\": \"hjones@example.com\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/User/Status",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"User",
+								"Status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
