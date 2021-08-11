@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "e4a8e8f1-d157-495c-b420-109cfe2107c2",
+		"name": "HPD Search API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get a Session Key",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userId",
+							"value": "{{UserId}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{Password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BaseURL}}/Logon",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"Logon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search the HPD",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "X-Session-Key",
+						"value": "{{SessionKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "City",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Fax",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "FirstName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "LastName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "NPI",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "OrganizationName\n",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "OrgnaizationNPI",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "OrganizationSpecialty",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Phone",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Role",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Specialty",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Street",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "State",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Zip",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BaseURL}}/Search",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"Search"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "{{SessionKey}}",
+			"value": ""
+		}
+	]
+}

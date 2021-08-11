@@ -1,15 +1,12 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "bbaab3fb-db5e-4c14-8441-279aca2043ac",
 		"name": "Direct Messaging API (REST)",
-		"_postman_id": "c305265c-2704-e897-706d-050dd72bba82",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Account",
-			"description": "",
 			"item": [
 				{
 					"name": "Get a Session Key",
@@ -17,112 +14,132 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var data = JSON.parse(responseBody);\r",
 									"postman.setEnvironmentVariable(\"SessionKey\", data.SessionKey);"
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Account/Logon",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"UserIdOrEmail\":\"direct address\",\n    \"Password\":\"password\"\n}"
+							"raw": "{\n    \"UserIdOrEmail\":\"example@example.com\",\n    \"Password\":\"password\"\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{BaseURL}}/Account/Logon",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Account",
+								"Logon"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get Your Account Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Account/Details",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "UserName",
-									"value": "kylec@datamotion.com",
-									"type": "text"
-								},
-								{
-									"key": "Password",
-									"value": "Test#Password",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": ""
 						},
-						"description": ""
+						"url": {
+							"raw": "{{BaseURL}}/Account/Details",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Account",
+								"Details"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Change Your Password",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Account/ChangePassword",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"OldPassword\":\"oldpassword\",\n    \"NewPassword\":\"newpassword\"\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{BaseURL}}/Account/ChangePassword",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Account",
+								"ChangePassword"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Logout",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Account/Logout",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Account/Logout",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Account",
+								"Logout"
+							]
+						}
 					},
 					"response": []
 				}
@@ -130,38 +147,29 @@
 		},
 		{
 			"name": "Folder",
-			"description": "",
 			"item": [
 				{
 					"name": "List All Folders",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Folder/List",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "UserName",
-									"value": "kylec@datamotion.com",
-									"type": "text"
-								},
-								{
-									"key": "Password",
-									"value": "Test#Password",
-									"type": "text"
-								}
+						"url": {
+							"raw": "{{BaseURL}}/Folder/List",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Folder",
+								"List"
 							]
 						},
 						"description": "Returns all folders of the user including appropriate/useful information"
@@ -171,23 +179,30 @@
 				{
 					"name": "Create a New Folder",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Folder/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"FolderName\":\"Folder Name\",\n    \"FolderType\": 0\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Folder/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Folder",
+								""
+							]
 						},
 						"description": "Creates a folder based on the specified body for Folder name and Folder Type\nLeave the url as https://SecureMessagingApi/Folder.svc/\nthere is nothing after the final /"
 					},
@@ -196,23 +211,30 @@
 				{
 					"name": "Delete a Folder",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Folder/{FolderId}",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"FolderName\":\"ApiTest\",\n    \"FolderType\": 0\n}"
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Folder/{FolderId}",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Folder",
+								"{FolderId}"
+							]
 						},
 						"description": "Deletes a folder based on the specified folder id at the end of the URL,\nPerformed using the HTTP Method Delete."
 					},
@@ -222,180 +244,251 @@
 		},
 		{
 			"name": "Group Mailbox",
-			"description": "",
 			"item": [
 				{
 					"name": "Show Delegates",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Folder/Delegates",
 						"method": "GET",
 						"header": [
 							{
-								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Delegates",
-					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Folder/john.doe2@customer.cmsafe.com/Delegates",
-						"method": "DELETE",
-						"header": [
+								"key": "Content-Type",
+								"value": "application/json"
+							},
 							{
 								"key": "X-Session-Key",
 								"value": "{{SessionKey}}",
-								"description": ""
+								"type": "text"
 							}
 						],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Show Group Boxes",
-					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Folder/GroupBox",
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{BaseURL}}/Folder/Delegates",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Folder",
+								"Delegates"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Add Delegate",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Folder/Delegates",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"DelegateAddress\":\"direct address of delegate to be added\"\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{BaseURL}}/Folder/Delegates",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Folder",
+								"Delegates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Delegates",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Session-Key",
+								"value": "{{SessionKey}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Folder/{DelegateAddress}/Delegates",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Folder",
+								"{DelegateAddress}",
+								"Delegates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Groupbox Membership",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Session-Key",
+								"value": "{{SessionKey}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Folder/GroupBox",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Folder",
+								"GroupBox"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get Group Inbox MID",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingAPI/Message/GetGroupInboxMessageIds",
 						"method": "POST",
 						"header": [
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"MustHaveAttachments\":false\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{BaseURL}}/Message/GetGroupInboxMessageIds",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								"GetGroupInboxMessageIds"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get Group Message Summaries",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingAPI/Message/GetGroupMessageSummaries",
 						"method": "POST",
 						"header": [
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"LastMessageIdReceived\":1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{BaseURL}}/GetGroupMessageSummaries/Message",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"GetGroupMessageSummaries",
+								"Message"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get Group Inbox",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Session-Key",
+								"value": "{{SessionKey}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{DIRECT_PRODUCTION}}/SecureMessagingAPI/Message/GroupInbox?After={MessageId}",
+							"raw": "{{BaseURL}}/Message/GroupInbox?After={MessageId}",
 							"host": [
-								"{{DIRECT_PRODUCTION}}"
+								"{{BaseURL}}"
 							],
 							"path": [
-								"SecureMessagingAPI",
 								"Message",
 								"GroupInbox"
 							],
 							"query": [
 								{
 									"key": "After",
-									"value": "{MessageId}",
-									"equals": true,
-									"description": ""
+									"value": "{MessageId}"
 								}
-							],
-							"variable": []
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get Unread Group Inbox",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Session-Key",
+								"value": "{{SessionKey}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{DIRECT_PRODUCTION}}/SecureMessagingAPI/Message/GroupInbox/Unread?After=2881",
+							"raw": "{{BaseURL}}/Message/GroupInbox/Unread?After={{LastMessageIdRecevied}}",
 							"host": [
-								"{{DIRECT_PRODUCTION}}"
+								"{{BaseURL}}"
 							],
 							"path": [
-								"SecureMessagingAPI",
 								"Message",
 								"GroupInbox",
 								"Unread"
@@ -403,23 +496,10 @@
 							"query": [
 								{
 									"key": "After",
-									"value": "2881",
-									"equals": true,
-									"description": ""
+									"value": "{{LastMessageIdRecevied}}"
 								}
-							],
-							"variable": []
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+							]
+						}
 					},
 					"response": []
 				}
@@ -427,157 +507,130 @@
 		},
 		{
 			"name": "Message",
-			"description": "",
 			"item": [
 				{
-					"name": "Get Inbox Message IDs",
+					"name": "Get Message Summaries",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/GetInboxMessageIds",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"FolderId\":1,\n\t\"MessageListFilter\":0,\n\t\"MessageStatusIds\":[1],\n\t\"MustHaveAttachments\":true\n}"
+							"raw": "{\n    \"FolderId\":\"1\",\n    \"LastMessageIdReceived\":\"1\"\n}"
 						},
-						"description": "Returns message ids based off of search parameters entered in the body"
+						"url": {
+							"raw": "{{BaseURL}}/Message/GetMessageSummaries",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								"GetMessageSummaries"
+							]
+						},
+						"description": "Searches based on filter parameters"
 					},
 					"response": []
 				},
 				{
 					"name": "Get Unread Messages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/Inbox/Unread",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": "Leave as /Unread to retrieve all unread messages,\nInclude ?After={LastMessageIDReceived} to only retrieve messages sent after that ID."
-					},
-					"response": []
-				},
-				{
-					"name": "Get Message Summaries",
-					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/GetMessageSummaries",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"FolderId\":\"1\",\n    \"LastMessageIdReceived\":\"1\",\n    \"OrderBy\":\"DESC\"\n}"
+							"raw": ""
 						},
-						"description": "Searches based on filter parameters"
+						"url": {
+							"raw": "{{BaseURL}}/Message/Inbox/Unread",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								"Inbox",
+								"Unread"
+							]
+						},
+						"description": "Leave as /Unread to retrieve all unread messages,\nInclude ?After={LastMessageIDReceived} to only retrieve messages sent after that ID."
 					},
 					"response": []
 				},
 				{
 					"name": "Search the Inbox",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/Inbox/Search",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"Filter\":\"Test\",\n    \"FolderId\":\"0\",\n    \"GetInboxUnReadOnly\":\"true\",\n    \"GetRetractedMsgs\":\"true\",\n    \"OrderBy\":\"\",\n    \"OrderDesc\":true,\n    \"PageNum\":1,\n    \"PageSize\":1\n}"
+							"raw": "{\n    \"Filter\":\"Test\",\n    \"FolderId\":0,\n    \"GetInboxUnReadOnly\":true,\n    \"GetRetractedMsgs\":true,\n    \"OrderBy\":\"\",\n    \"OrderDesc\":true,\n    \"PageNum\":1,\n    \"PageSize\":1\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Message/Inbox/Search",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								"Inbox",
+								"Search"
+							]
 						},
 						"description": "Searches based on filter parameters"
 					},
 					"response": []
 				},
 				{
-					"name": "Get Message Metadata",
-					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/{MessageId}/Metadata",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": "returns tracking and security info for a message"
-					},
-					"response": []
-				},
-				{
 					"name": "Get a Message",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/{MessageId}",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "datamotion",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "Dm0tion",
-									"type": "text"
-								}
+						"url": {
+							"raw": "{{BaseURL}}/Message/{MessageId}",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								"{MessageId}"
 							]
 						},
 						"description": "Gets the message specified by the MID in the URL"
@@ -585,23 +638,66 @@
 					"response": []
 				},
 				{
-					"name": "Get a MIME Message",
+					"name": "Get Message Metadata",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/{MessageId}/Mime",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Message/{MessageId}/Metadata",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								"{MessageId}",
+								"Metadata"
+							]
+						},
+						"description": "returns tracking and security info for a message"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a MIME Message",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-Session-Key",
+								"value": "{{SessionKey}}"
+							}
+						],
+						"url": {
+							"raw": "{{BaseURL}}/Message/{MessageId}/Mime",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								"{MessageId}",
+								"Mime"
+							]
+						},
 						"description": "returns Mime format of a message"
 					},
 					"response": []
@@ -609,73 +705,62 @@
 				{
 					"name": "Send a Message",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"To\":[\"direct address\"],\n\t\"Cc\":[],\n\t\"Bcc\":[],\n\t\"Subject\":\"Send Test\",\n\t\"CreateTime\":\"2:22 PM\",\n\t\"Attachments\":[],\n\t\"HtmlBody\":\"Test\",\n\t\"TextBody\":\"Test\"\n}"
+							"raw": "{\n    \"To\": [\"recipient@example.com\"],\n    \"From\": \"sender@example.com\",\n    \"Cc\": [\"cc@example.com\"],\n    \"Bcc\": [\"bcc@example.com\"],\n    \"Subject\": \"Sensitive Information\",\n    \"CreateTime\": \"11:51 AM\",\n    \"Attachments\":\n    [\n        {\n            \"AttachmentBase64\":\"Base64StringHere\",\n            \"ContentType\":\"image/jpeg\",\n            \"FileName\":\"logo.jpeg\"\n        }\n    ],\n    \"HtmlBody\":\"String content\",\n    \"TextBody\":\"String content\"\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Message/",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								""
+							]
 						},
 						"description": "sends a message based off of content in the body of the post request"
 					},
 					"response": []
 				},
 				{
-					"name": "Send a Message with Attachments",
-					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"To\":[\"direct address\"],\n\t\"Cc\":[],\n\t\"Bcc\":[],\n\t\"Subject\":\"Send Test with Attachment\",\n\t\"CreateTime\":\"11:51 AM\",\n\t\"Attachments\":[{\n\t    \"AttachmentBase64\":\"SGVsbG8gdGhpcyBpcyBhIHRlc3QgZmlsZS4=\",\n        \"ContentType\":\"text/plain\",\n        \"FileName\":\"text.txt\"\n    }],\n\t\"HtmlBody\":\"Test\",\n\t\"TextBody\":\"Test\"\n}"
-						},
-						"description": "sends a message based off of content in the body of the post request, this one has attachments"
-					},
-					"response": []
-				},
-				{
 					"name": "Send a MIME Message",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/Mime",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"MimeMessage\":\"MIME String Here\"\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Message/Mime",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								"Mime"
+							]
 						},
 						"description": "sends Mime message"
 					},
@@ -684,23 +769,31 @@
 				{
 					"name": "Move a Message",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/{MessageId}/Move",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"DestinationFolderId\":2\n}"
+						},
+						"url": {
+							"raw": "{{BaseURL}}/Message/{MessageId}/Move",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								"{MessageId}",
+								"Move"
+							]
 						},
 						"description": "Moves a message to a specified folder"
 					},
@@ -709,62 +802,31 @@
 				{
 					"name": "Delete a Message",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/{MessageId}",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
-						"body": {},
-						"description": "Deletes the specified message designated by the MID in the url"
-					},
-					"response": []
-				},
-				{
-					"name": "Delete a Message Permanently",
-					"request": {
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NewFolderId\": 2147483647,\r\n    \"Result\": \"String content\"\r\n}\r\n    "
+						},
 						"url": {
-							"raw": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/{MessageId}?Permanently=true",
+							"raw": "{{BaseURL}}/Message/{MessageId}",
 							"host": [
-								"{{DIRECT_PRODUCTION}}"
+								"{{BaseURL}}"
 							],
 							"path": [
-								"SecureMessagingApi",
 								"Message",
 								"{MessageId}"
-							],
-							"query": [
-								{
-									"key": "Permanently",
-									"value": "true",
-									"equals": true,
-									"description": ""
-								}
-							],
-							"variable": []
+							]
 						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
-							}
-						],
-						"body": {},
 						"description": "Deletes the specified message designated by the MID in the url"
 					},
 					"response": []
@@ -772,29 +834,63 @@
 				{
 					"name": "Retract a Message",
 					"request": {
-						"url": "{{DIRECT_PRODUCTION}}/SecureMessagingApi/Message/{MessageId}/Retract",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "X-Session-Key",
-								"value": "{{SessionKey}}",
-								"description": ""
+								"value": "{{SessionKey}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
+						"url": {
+							"raw": "{{BaseURL}}/Message/{MessageId}/Retract",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"Message",
+								"{MessageId}",
+								"Retract"
+							]
+						},
 						"description": "retracts a message"
 					},
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "{{SessionKey}}",
+			"value": ""
 		}
 	]
 }
